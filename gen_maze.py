@@ -7,6 +7,7 @@ Created on Wed Mar 16 12:31:16 2022
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+import pickle
 
 
 def rmove():
@@ -70,6 +71,12 @@ class Maze:
         sns.heatmap(a,cmap='GnBu')
         plt.show()
         
+    def maze_save(self,filename='maze.pkl'):
+        with open(filename,'wb') as f:
+            pickle.dump(self.maze,f)
+        
+        
+        
             
 
     
@@ -103,13 +110,16 @@ def set_terminant(a):
             return w-2,i
         
 
-
-    
-    
-    
-    
+        
 
 
-a=Maze(width=10,height=10)
+    
+    
+    
+    
+
+
+a=Maze(width=20,height=20)
 a.solve_re()
 a.maze_show_solution_path()
+a.maze_save()
